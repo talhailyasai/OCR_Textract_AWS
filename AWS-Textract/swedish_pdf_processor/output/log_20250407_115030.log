@@ -1,0 +1,37 @@
+2025-04-07 11:50:30,465 - __main__ - INFO - Swedish PDF Processor
+2025-04-07 11:50:30,466 - __main__ - INFO - Processing file: path/to/your/swedish_document.pdf
+2025-04-07 11:50:30,467 - __main__ - INFO - Processing PDF: path/to/your/swedish_document.pdf
+2025-04-07 11:50:30,467 - __main__ - INFO - Output will be saved to: C:\Users\PC\Desktop\Projects\AWS-Textract\swedish_pdf_processor\output\swedish_document_20250407_115030
+2025-04-07 11:50:30,468 - __main__ - INFO - Step 1: Preprocessing PDF
+2025-04-07 11:50:30,468 - src.preprocess - INFO - Preprocessing PDF: path/to/your/swedish_document.pdf
+2025-04-07 11:50:30,477 - src.preprocess - INFO - Converting PDF to images at 300 DPI
+2025-04-07 11:50:30,501 - src.preprocess - ERROR - Error preprocessing PDF: Unable to get page count. Is poppler installed and in PATH?
+2025-04-07 11:50:30,502 - __main__ - ERROR - Error processing PDF: Unable to get page count. Is poppler installed and in PATH?
+Traceback (most recent call last):
+  File "C:\Users\PC\Desktop\Projects\AWS-Textract\swedish_pdf_processor\.venv\Lib\site-packages\pdf2image\pdf2image.py", line 581, in pdfinfo_from_path
+    proc = Popen(command, env=env, stdout=PIPE, stderr=PIPE)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Program Files\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\Desktop\Projects\AWS-Textract\swedish_pdf_processor\main.py", line 184, in main
+    process_pdf(
+  File "C:\Users\PC\Desktop\Projects\AWS-Textract\swedish_pdf_processor\main.py", line 68, in process_pdf
+    image_paths, doc_id = preprocess_pdf(pdf_path, output_dir, dpi)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\Desktop\Projects\AWS-Textract\swedish_pdf_processor\src\preprocess.py", line 46, in preprocess_pdf
+    images = convert_from_path(pdf_path, dpi=dpi)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\Desktop\Projects\AWS-Textract\swedish_pdf_processor\.venv\Lib\site-packages\pdf2image\pdf2image.py", line 127, in convert_from_path
+    page_count = pdfinfo_from_path(
+                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\Desktop\Projects\AWS-Textract\swedish_pdf_processor\.venv\Lib\site-packages\pdf2image\pdf2image.py", line 607, in pdfinfo_from_path
+    raise PDFInfoNotInstalledError(
+pdf2image.exceptions.PDFInfoNotInstalledError: Unable to get page count. Is poppler installed and in PATH?
